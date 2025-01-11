@@ -1,71 +1,141 @@
-# Getting Started with Create React App
+# Emotion-Based Playlist Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application that detects user emotions using facial expressions and generates a playlist from Spotify matching the detected emotion.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Real-time Emotion Detection**: Uses a webcam and AI models to detect emotions like happiness, sadness, and neutrality.
+- **Spotify Integration**: Fetches playlists from Spotify based on the detected emotion.
+- **Responsive Design**: Optimized for desktop and mobile devices.
+- **Interactive UI**: Modern and user-friendly interface with Material-UI components.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Ensure you have the following installed:
 
-### `npm run build`
+- [Node.js](https://nodejs.org/) (v14 or later)
+- npm (comes with Node.js)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the Repository**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone https://github.com/dkunze/emotion-based
+   cd emotion-based
+   ```
 
-### `npm run eject`
+2. **Install Dependencies**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   npm install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Set Up Models**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   - Download the required models for `face-api.js` from [here](https://github.com/justadudewhohacks/face-api.js-models).
+   - Place the models in the `public/models` directory of your project.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Set Up Backend**
 
-## Learn More
+   - Create a backend folder and implement an API [here](https://developer.spotify.com/) to fetch Spotify playlists using client credentials.
+   - Use your Spotify API credentials in a `.env` file:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+     ```plaintext
+     SPOTIFY_CLIENT_ID=your_client_id
+     SPOTIFY_CLIENT_SECRET=your_client_secret
+     ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. **Run the Backend**
 
-### Code Splitting
+   Navigate to your backend folder and start the server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ```bash
+   node server.js
+   ```
 
-### Analyzing the Bundle Size
+6. **Run the Frontend**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   Start the React development server:
 
-### Making a Progressive Web App
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. Open the application in your browser at `http://localhost:3000`.
+2. Click **Start Camera** to enable your webcam.
+3. Click **Detect Emotion** to analyze your facial expression and detect your emotion.
+4. View the detected emotion and the suggested Spotify playlists.
+5. Click **Stop Camera** to disable the webcam when done.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Folder Structure
 
-### `npm run build` fails to minify
+```
+.
+├── public/
+│   ├── models/
+│   │   ├── tiny_face_detector_model-weights_manifest.json
+│   │   ├── tiny_face_detector_model-shard1
+│   │   ├── face_expression_model-weights_manifest.json
+│   │   ├── face_expression_model-shard1
+├── src/
+│   ├── App.js
+│   ├── App.css
+│   ├── index.js
+├── backend/
+│   ├── server.js
+├── package.json
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# emotion-based
+---
+
+## Deployment
+
+### Frontend
+
+Deploy the frontend to services like:
+
+- [Netlify](https://www.netlify.com/)
+- [Vercel](https://vercel.com/)
+
+### Backend
+
+Deploy the backend to services like:
+
+- [Heroku](https://www.heroku.com/)
+- [Render](https://render.com/)
+
+---
+
+## Technologies Used
+
+- **Frontend**: React, Material-UI, face-api.js
+- **Backend**: Node.js, Express, Axios, Spotify Web API
+- **Deployment**: Netlify/Vercel for frontend, Heroku/Render for backend
+
+---
+
+## Future Enhancements
+
+- **Multiple Face Detection**: Support for detecting emotions from multiple users simultaneously.
+- **Custom Playlists**: Allow users to create custom playlists based on multiple emotions.
+- **Improved Models**: Use more accurate and diverse AI models for emotion detection.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
